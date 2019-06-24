@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     });
 });
 
-require('./app/routes/note.routes.js')(app);
+require('./app/routes')(app);
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
