@@ -9,6 +9,9 @@ const mongoose = require('mongoose');
 
 const logger = require('morgan');
 
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDefinition = require('./config/swagger.config.js');
 const dbConfig = require('./config/database.config.js');
 
 app.use(bodyParser.urlencoded({
@@ -17,6 +20,18 @@ app.use(bodyParser.urlencoded({
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
+
+let swaggerSpec = swaggerJSDoc({
+    swaggerDefinition,
+    apis: ['./app/routes/index']
+});
+
+app.get('/swagger.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec)
+});
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 mongoose.Promise = global.Promise;
 
