@@ -7,12 +7,15 @@ const app = express();
 
 const mongoose = require('mongoose');
 
+const logger = require('morgan');
+
 const dbConfig = require('./config/database.config.js');
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use(logger('dev'));
 app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
