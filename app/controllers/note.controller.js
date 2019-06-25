@@ -52,9 +52,9 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    if (!req.body.content) {
+    if (!req.body.id) {
         return res.status(400).send({
-            message: 'Note content can not be empty'
+            message: 'Note id can not be empty'
         });
 
         Note.findByIdAndUpdate(req, params.noteId, {
