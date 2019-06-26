@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const PORT = 3000;
 
@@ -13,6 +14,8 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDefinition = require('./config/swagger.config.js');
 const dbConfig = require('./config/database.config.js');
+const apiRouter = require('./app/routes/api.routes.js');
+const webRouter = require('./app/routes/web.routes.js');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -20,6 +23,12 @@ app.use(bodyParser.urlencoded({
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
+
+// view engine setup
+app.set('views', path.join(__dirname, './app/views'));
+app.set('view engine', 'pug');
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 let swaggerSpec = swaggerJSDoc({
     swaggerDefinition,
@@ -44,13 +53,8 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-app.get('/', (req, res) => {
-    res.json({
-        'message': 'Hello, World!'
-    });
-});
-
-require('./app/routes')(app);
+app.use('/', webRouter);
+app.use('/api', apiRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
