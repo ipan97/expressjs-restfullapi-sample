@@ -1,9 +1,7 @@
 const MONGODB_URL = "mongodb://localhost:27017/travel_app";
-const MONGODB_PASSWORD = "";
-
 const mongoose = require("mongoose");
 
-const run = async function() {
+const run = async () => {
   mongoose.Promise = global.Promise;
   mongoose
     .connect(MONGODB_URL, {
