@@ -35,7 +35,7 @@ module.exports = {
             .then(data => {
                 if (!data) {
                     res.send({
-                        message: `Note not found with id ${req.params.id}`
+                        message: `Customer not found with id ${req.params.id}`
                     });
                 }
                 res.send(data);
@@ -111,7 +111,7 @@ module.exports = {
                 });
             }
             return res.status(500).send({
-                message: `Could not delete note with id ${req.params.id}`
+                message: `Could not delete customer with id ${req.params.id}`
             });
         });
     }
