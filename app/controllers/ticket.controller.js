@@ -2,11 +2,15 @@ const Ticket = require("../models/ticket.model.js");
 
 module.exports = {
     create: (req, res) => {
-        let ticket = new Order({
+        let ticket = new Ticket({
             arrival: req.body.arrival,
             destination: req.body.destination,
             price: req.body.price,
-            numberOfInfant: req.body.numberOfInfant
+            numberOfInfant: req.body.numberOfInfant,
+            stock: req.body.stock,
+            bought: req.body.bought,
+            numberOfChild: req.body.numberOfChild,
+            arrived: req.body.arrived
         });
         ticket
             .save()
@@ -53,7 +57,7 @@ module.exports = {
                     });
                 }
                 return res.status(500).send({
-                    message: `Error retrieving Order with id ${req.params.id}`
+                    message: `Error retrieving ticket with id ${req.params.id}`
                 });
             });
     },
@@ -62,7 +66,11 @@ module.exports = {
             arrival: req.body.arrival,
             destination: req.body.destination,
             price: req.body.price,
-            numberOfInfant: req.body.numberOfInfant
+            numberOfInfant: req.body.numberOfInfant,
+            stock: req.body.stock,
+            bought: req.body.bought,
+            numberOfChild: req.body.numberOfChild,
+            arrived: req.body.arrived
         }).then((data) => {
             if (!data) {
                 return res.status(404).send({
@@ -98,7 +106,7 @@ module.exports = {
                 });
             }
             return res.status(500).send({
-                message: `Could not delete note with id ${req.params.id}`
+                message: `Could not delete ticket with id ${req.params.id}`
             });
         });
     }
