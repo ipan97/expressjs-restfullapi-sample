@@ -2,9 +2,9 @@ const Order = require("../models/order.model.js");
 
 module.exports = {
     create: (req, res) => {
-        if (!req.body.nationalId) {
+        if (!req.body.customerId) {
             return res.status(400).send({
-                message: "Order nationalId can not be empty"
+                message: "Order customerId can not be empty"
             });
         }
 
@@ -31,7 +31,7 @@ module.exports = {
             .then(data => {
                 if (!data) {
                     res.send({
-                        message: `Note not found with id ${req.params.id}`
+                        message: `Order not found with id ${req.params.id}`
                     });
                 }
                 res.send(data);
@@ -104,7 +104,7 @@ module.exports = {
                 });
             }
             return res.status(500).send({
-                message: `Could not delete note with id ${req.params.id}`
+                message: `Could not delete order with id ${req.params.id}`
             });
         });
     }
