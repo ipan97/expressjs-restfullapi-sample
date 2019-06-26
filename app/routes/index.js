@@ -4,4 +4,5 @@ module.exports = (app) => {
     require('./ticket.routes.js')(app);
     require('./order.routes.js')(app);
     require('./airline.routes.js')(app);
+    require('./invoice.routes.js')(app);
 }
