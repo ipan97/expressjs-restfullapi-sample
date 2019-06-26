@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const AirlineSchema = mongoose.Schema({
+    code: String,
     name: String,
     logo: String,
     url: String
