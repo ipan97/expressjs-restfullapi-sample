@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const NoteSchema = mongoose.Schema({
+const mongoose = require("mongoose");
+const NoteSchema = mongoose.Schema(
+  {
     nationalId: String,
     firstName: String,
     lastName: String,
@@ -7,7 +8,9 @@ const NoteSchema = mongoose.Schema({
     gender: String,
     address: String,
     passportNumber: String
-}, {
+  },
+  {
     timestamps: true
-});
-module.exports = mongoose.model('Customer', NoteSchema);
+  }
+);
+module.exports = mongoose.model("Customer", NoteSchema);

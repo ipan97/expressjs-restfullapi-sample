@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const TicketSchema = mongoose.Schema({
+const mongoose = require("mongoose");
+const TicketSchema = mongoose.Schema(
+  {
     name: String,
     arrival: String,
     destination: String,
@@ -10,7 +11,9 @@ const TicketSchema = mongoose.Schema({
     bought: Number,
     numberOfChild: Number,
     arrived: Date
-}, {
+  },
+  {
     timestamps: true
-});
-module.exports = mongoose.model('Ticket', TicketSchema);
+  }
+);
+module.exports = mongoose.model("Ticket", TicketSchema);
