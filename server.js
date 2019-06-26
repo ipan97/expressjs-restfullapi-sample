@@ -6,14 +6,13 @@ const PORT = 3000;
 
 const app = express();
 
-const mongoose = require('mongoose');
+const mongo = require('./config/database.config');
 
 const logger = require('morgan');
 
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDefinition = require('./config/swagger.config.js');
-const dbConfig = require('./config/database.config.js');
 const apiRouter = require('./app/routes/api.routes.js');
 const webRouter = require('./app/routes/web.routes.js');
 
@@ -32,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 let swaggerSpec = swaggerJSDoc({
     swaggerDefinition,
-    apis: ['./app/routes/index']
+    apis: ['./app/routes/api.routes.js']
 });
 
 app.get('/swagger.json', (req, res) => {
@@ -40,18 +39,9 @@ app.get('/swagger.json', (req, res) => {
     res.send(swaggerSpec)
 });
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-mongoose.Promise = global.Promise;
-
-mongoose.connect(dbConfig.url, {
-    useNewUrlParser: true
-}).then(() => {
-    console.log("Successfully connected to the database");
-}).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
-    process.exit();
-});
+mongo.run();
 
 app.use('/', webRouter);
 app.use('/api', apiRouter);
