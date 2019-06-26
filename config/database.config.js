@@ -1,4 +1,4 @@
-const MONGODB_URL = 'mongodb://localhost:27017/easy-notes';
+const MONGODB_URL = 'mongodb://localhost:27017/travel_app';
 const MONGODB_PASSWORD = '';
 
 module.exports = {
