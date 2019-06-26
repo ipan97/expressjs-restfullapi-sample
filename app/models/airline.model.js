@@ -7,4 +7,4 @@ const AirlineSchema = mongoose.Schema({
 }, {
     timestamps: true
 });
-module.exports = mongoose.model('Airline', NoteSchema);
+module.exports = mongoose.model('Airline', AirlineSchema);
