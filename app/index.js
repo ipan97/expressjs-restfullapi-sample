@@ -49,7 +49,7 @@ app.get("/swagger.json", (req, res) => {
 
 app.use("/api/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-mongo.run();
+mongo.connect();
 
 app.use("/", webRouter);
 app.use("/api", apiRouter);
