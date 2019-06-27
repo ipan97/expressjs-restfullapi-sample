@@ -3,6 +3,8 @@ const AirlineSchema = mongoose.Schema(
   {
     code: String,
     name: String,
+    city: String,
+    state: String,
     logo: String,
     url: String
   },
