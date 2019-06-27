@@ -4,7 +4,7 @@
   "description": "Travel App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon ./server.js"
   },
   "keywords": [],
@@ -17,20 +17,28 @@
     "morgan": "^1.9.1",
     "pug": "^2.0.4",
     "swagger-jsdoc": "^3.2.9",
-    "swagger-ui-express": "^4.0.6"
+    "swagger-ui-express": "^4.0.6",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "acorn-jsx": "^5.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.7.1",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.11.0",
+    "faker": "^4.1.0",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
-    "prettier-eslint": "^9.0.0"
+    "prettier-eslint": "^9.0.0",
+    "superagent": "^5.1.0",
+    "supertest": "^4.0.2"
   }
 }

@@ -1,16 +1,23 @@
 {
-  "extends": ["prettier", "eslint:recommended"],
-  "plugins": ["prettier"],
+  "extends": ["prettier", "eslint:recommended", "plugin:jest/recommended"],
+  "plugins": ["prettier", "jest"],
   "rules": {
     "prettier/prettier": ["error"],
     "eol-last": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   },
   "parserOptions": {
-    "ecmaVersion": 2017
+    "ecmaVersion": 2017,
+    "sourceType": "module"
   },
   "env": {
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   }
 }
