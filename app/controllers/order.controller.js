@@ -12,7 +12,8 @@ module.exports = {
       customerId: req.body.customerId,
       orderDate: req.body.orderDate,
       orderTimestamp: req.body.orderTimestamp,
-      status: req.body.status
+      status: req.body.status,
+      tickets: req.body.tickets
     });
     order
       .save()
